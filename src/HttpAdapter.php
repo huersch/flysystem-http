@@ -274,7 +274,7 @@ class HttpAdapter implements AdapterInterface
         $path = str_replace('%2F', '/', $path);
         $path = str_replace(' ', '%20', $path);
 
-        if ($this->context['http']['request_fulluri'])
+        if (array_key_exists('http',$this->context) && array_key_exists('request_fulluri',$this->context['http']) && $this->context['http']['request_fulluri'])
             return $this->base . $path;
         else
             return rtrim($this->base, '/') . '/' . $path;
